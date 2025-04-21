@@ -54,28 +54,29 @@ Now, the Stack becomes empty, which means we have visited all the nodes, and our
  <li>If Not Visited, add it to the STACK. Else Call The Function Again Until No more nodes needs to be visited.</li>
 </ol></B>
 <h3>PROGRAM</h3>
-from collections import defaultdict
-def dfs(graph, start, visited, path):
-    path.append(start)
-    visited[start] = True
-    for neighbour in graph[start]:
-        if not visited[neighbour]:
-            dfs(graph, neighbour, visited, path)
-    return path
+          
+    from collections import defaultdict
+    def dfs(graph, start, visited, path):
+        path.append(start)
+        visited[start] = True
+        for neighbour in graph[start]:
+            if not visited[neighbour]:
+                dfs(graph, neighbour, visited, path)
+        return path
 
-graph = defaultdict(list)
-n, e = map(int, input("Enter number of nodes and edges (n e): ").split())
-print("Enter edges (u v):")
-for i in range(e):
-    u, v = input().split()
-    graph[u].append(v)
-    graph[v].append(u)
-print("Graph:", dict(graph))
-start = 'A'
-visited = defaultdict(bool)
-path = []
-traversed_path = dfs(graph, start, visited, path)
-print("DFS Traversal Path:", traversed_path)
+    graph = defaultdict(list)
+    n, e = map(int, input("Enter number of nodes and edges (n e): ").split())
+    print("Enter edges (u v):")
+    for i in range(e):
+        u, v = input().split()
+        graph[u].append(v)
+        graph[v].append(u)
+    print("Graph:", dict(graph))
+    start = 'A'
+    visited = defaultdict(bool)
+    path = []
+    traversed_path = dfs(graph, start, visited, path)
+    print("DFS Traversal Path:", traversed_path)
 
 <hr>
 <h3>Sample Input</h3>
