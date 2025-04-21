@@ -1,6 +1,6 @@
 <h1>ExpNo 2 : Implement Depth First Search Traversal of a Graph</h1> 
-<h3>Name: </h3>
-<h3>Register Number:     </h3>
+<h3>Name: Shakthi Kumar S </h3>
+<h3>Register Number: 212222110043    </h3>
 <H3>Aim:</H3>
 <p> To Implement Depth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -53,6 +53,29 @@ Now, the Stack becomes empty, which means we have visited all the nodes, and our
  <li>Find its Successors Or neighbors and Check whether the node is visited or not</li>
  <li>If Not Visited, add it to the STACK. Else Call The Function Again Until No more nodes needs to be visited.</li>
 </ol></B>
+<h3>PROGRAM</h3>
+from collections import defaultdict
+def dfs(graph, start, visited, path):
+    path.append(start)
+    visited[start] = True
+    for neighbour in graph[start]:
+        if not visited[neighbour]:
+            dfs(graph, neighbour, visited, path)
+    return path
+
+graph = defaultdict(list)
+n, e = map(int, input("Enter number of nodes and edges (n e): ").split())
+print("Enter edges (u v):")
+for i in range(e):
+    u, v = input().split()
+    graph[u].append(v)
+    graph[v].append(u)
+print("Graph:", dict(graph))
+start = 'A'
+visited = defaultdict(bool)
+path = []
+traversed_path = dfs(graph, start, visited, path)
+print("DFS Traversal Path:", traversed_path)
 
 <hr>
 <h3>Sample Input</h3>
@@ -69,10 +92,7 @@ G F <BR>
 F H <BR>
 <hr>
 <h3>Sample Output</h3>
-<hr>
-['A', 'B', 'E', 'D', 'C', 'G', 'F', 'H']
-
-<hr>
+<img src="funaiexpp02-1.png" alt="output" width=500>
 
 <hr>
 <h3>Sample Input</h3>
@@ -85,10 +105,7 @@ F H <BR>
 2 4 <BR>
 <hr>
 <h3>Sample Output</h3>
-<hr>
-['0', '1', '2', '3', '4']
-
-<hr>
+<img src="funaiexpp02-2.png" alt="outputimg" width=500>
 <h3>Result:</h3>
 <hr>
 <p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.</p>
